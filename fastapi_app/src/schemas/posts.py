@@ -11,3 +11,5 @@ class PostRequestSchema(BaseModel):
 class PostResponseSchema(BaseModel):
     post_text: str
     author_name: str
+
+
