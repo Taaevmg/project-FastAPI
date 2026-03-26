@@ -4,7 +4,12 @@ import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from app.routes import posts
+from src.routes import posts
+from src.database import engine
+from src import models
+
+models.Base.metadata.create_all(bind=engine)
+
 
 app = FastAPI(root_path="/api/v1")
 app.include_router(posts.router, prefix="/posts", tags=["posts"])
