@@ -8,7 +8,7 @@ from src.routes import posts
 from src.database import engine
 from src import models
 
-models.Base.metadata.create_all(bind=engine)
+#models.Base.metadata.create_all(bind=engine)
 
 
 app = FastAPI(root_path="/api/v1")
