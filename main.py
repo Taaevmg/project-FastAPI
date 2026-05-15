@@ -4,17 +4,13 @@ import uvicorn
 from fastapi import FastAPI
 from starlette.middleware.cors import CORSMiddleware
 
-from src.routes import posts
-from src.database import engine
-from src import models
-
-#models.Base.metadata.create_all(bind=engine)
+from app.routes import posts
 
 
 app = FastAPI(root_path="/api/v1")
 app.include_router(posts.router, prefix="/posts", tags=["posts"])
 app.add_middleware(
-    CORSMiddleware,    # type: ignore
+    CORSMiddleware,
     allow_origins=["*"],
     allow_credentials=True,
     allow_methods=["*"],

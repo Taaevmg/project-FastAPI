@@ -1,9 +1,3 @@
-import sys
-from pathlib import Path
-
-sys.path.append(str(Path(__file__).parent.parent))
-
-
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -24,13 +18,21 @@ if config.config_file_name is not None:
 # for 'autogenerate' support
 # from myapp import mymodel
 # target_metadata = mymodel.Base.metadata
-from src.models import Base
-target_metadata = Base.metadata
+target_metadata = None
 
 # other values from the config, defined by the needs of env.py,
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+
+import sys
+import os
+sys.path.append(os.getcwd())  # Это нужно, чтобы Alembic мог найти app.models и app.database
+
+from app.models import Base
+from app.database import SQLALCHEMY_DATABASE_URL, engine
+
+target_metadata = Base.metadata
 
 
 def run_migrations_offline() -> None:
@@ -64,11 +66,7 @@ def run_migrations_online() -> None:
     and associate a connection with the context.
 
     """
-    connectable = engine_from_config(
-        config.get_section(config.config_ini_section, {}),
-        prefix="sqlalchemy.",
-        poolclass=pool.NullPool,
-    )
+    connectable = engine
 
     with connectable.connect() as connection:
         context.configure(
