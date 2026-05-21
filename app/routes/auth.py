@@ -10,15 +10,12 @@ from app.database import get_db
 
 from passlib.context import CryptContext
 
-import os
-from dotenv import load_dotenv
-load_dotenv()
-
 router = APIRouter()
 
-SECRET_KEY = os.getenv("SECRET_KEY")
-ALGORITHM = os.getenv("ALGORITHM", "HS256")          # значение по умолчанию, если переменная не задана
-ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES", "5"))
+# Конфигурация ключей и алгоритма JWT
+SECRET_KEY = "fju834fjuihfijwur924ri2ru2r9i2rjowihf84rjr2r293rej"
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 5
 
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/token")
