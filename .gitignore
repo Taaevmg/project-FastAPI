@@ -1,24 +1,21 @@
-# Python bytecode
+
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
+
 
 .idea/
-.vscode/
 
-db.sqlite3
-*.db
-
-.env
-.env.local
 
 venv/
 .venv/
-env/
 
-*.log
 
-alembic/__pycache__/
-alembic/versions/__pycache__/
+.env
+
+*.db
+*.sqlite3
+
 
 .DS_Store
 Thumbs.db
