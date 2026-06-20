@@ -1,14 +1,26 @@
 services:
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: blogicum
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
   app:
     build: .
     ports:
-      - "8020:8000"
+      - "8000:8000"
     env_file:
       - .env
     environment:
-      - PYTHONPATH=/application
-    volumes:
-      - sqlite_data:/application/app   # чтобы база сохранялась на хосте
+      DATABASE_URL: postgresql+asyncpg://user:password@db:5432/blogicum
+      PYTHONPATH: /app/src
+    depends_on:
+      - db
 
 volumes:
-  sqlite_data:
+  pgdata:

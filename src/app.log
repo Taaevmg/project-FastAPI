@@ -1,0 +1,8 @@
+2026-05-26 22:20:46,165 [INFO] GET http://localhost:8000/docs - 200 (0.00s)
+2026-05-26 22:20:46,385 [INFO] GET http://localhost:8000/openapi.json - 200 (0.08s)
+2026-05-26 22:21:41,736 [INFO] POST http://localhost:8000/api/v1/posts/users/ - 500 (0.20s)
+2026-05-26 22:21:57,041 [INFO] POST http://localhost:8000/api/v1/posts/users/ - 422 (0.00s)
+2026-05-26 22:22:06,547 [INFO] POST http://localhost:8000/api/v1/posts/users/ - 500 (0.20s)
+2026-05-26 22:24:53,715 [INFO] GET http://localhost:8000/docs - 200 (0.00s)
+2026-05-26 22:24:53,905 [INFO] GET http://localhost:8000/openapi.json - 200 (0.09s)
+2026-05-26 22:25:09,998 [INFO] POST http://localhost:8000/api/v1/posts/users/ - 500 (0.20s)
